@@ -44,7 +44,28 @@ const getCourseScheduleByIdAsync = async (req, res) => {
   }
 };
 
+const addCourseScheduleAsync = async (req, res) => {
+  try {
+    const courseScheduleData = req.body;
+    const newCourseScheduleId = await courseScheduleService.addCourseSchedule(
+      courseScheduleData
+    );
+    res.status(201).json({
+      success: true,
+      data: { id: newCourseScheduleId },
+      message: "Course schedule added successfully",
+    });
+  } catch (error) {
+    console.error("Error adding course schedule:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to add course schedule",
+    });
+  }
+};
+
 module.exports = {
   getCourseSchedulesAsync,
   getCourseScheduleByIdAsync,
+  addCourseScheduleAsync,
 };

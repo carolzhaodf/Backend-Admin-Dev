@@ -7,4 +7,6 @@ const courseScheduleController = require("../controller/courseScheduleController
 router.get("/", courseScheduleController.getCourseSchedulesAsync);
 router.get("/:id", courseScheduleController.getCourseScheduleByIdAsync);
 
+router.post("/", courseScheduleController.addCourseScheduleAsync);
+
 module.exports = router;

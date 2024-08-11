@@ -7,12 +7,21 @@ const getCourseSchedules = async () => {
 };
 
 const getCourseScheduleById = async (id) => {
-  let sql = "SELECT * FROM course_schedule WHERE id = ?";
+  let sql = "SELECT * FROM courseschedule WHERE id = ?";
   let result = await db.query(sql, [id]);
   return result[0][0];
+};
+
+const addCourseSchedule = async (courseScheduleData) => {
+  const { id, startDate, endDate, isPublished } = courseScheduleData;
+  let sql =
+    "INSERT INTO courseschedule (id, startDate, endDate, isPublished) VALUES (?, ?, ?, ?)";
+  let result = await db.query(sql, [id, startDate, endDate, isPublished]);
+  return result[0].insertId;
 };
 
 module.exports = {
   getCourseSchedules,
   getCourseScheduleById,
+  addCourseSchedule,
 };
