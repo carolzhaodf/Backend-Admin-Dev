@@ -16,7 +16,7 @@ bcrypt.genSalt(10).then((data) => {
 const courseScheduleRouter = require("./router/courseScheduleRouter");
 
 // use router
-app.use("/course-schedules", courseScheduleRouter);
+app.use("/api/course-schedules", courseScheduleRouter);
 
 // // set List
 // app.use(express.static("public"));
